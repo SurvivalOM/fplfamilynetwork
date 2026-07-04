@@ -59,7 +59,9 @@
   .feat .ic{width:52px;height:52px;border-radius:13px;background:rgba(198,162,73,.14);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 14px}
   .feat h3{font-family:var(--serif);font-weight:600;font-size:22px;color:var(--cream);margin-bottom:7px}
   .feat p{font-size:14px;color:var(--muted);line-height:1.6}
-  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+  .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:stretch}
+  @media(max-width:1000px){.tiers{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.tiers{grid-template-columns:1fr}}
   .tier{background:rgba(10,18,38,.45);border:1px solid rgba(198,162,73,.22);border-radius:18px;padding:28px 24px;text-align:center;display:flex;flex-direction:column}
   .tier.hot{border-color:var(--gold);box-shadow:0 10px 34px rgba(198,162,73,.15)}
   .tier .tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-lt);margin-bottom:8px}
@@ -130,7 +132,7 @@
     <div class="sec-head">
       <div class="eyebrow">Membership</div>
       <h2>Choose your seat in the family</h2>
-      <p>Every tier is a one-time payment for lifetime access. No subscriptions. No renewals. Ever.</p>
+      <p>The journey rises in order — Volunteer, Friends &amp; Family, Warrior, Kings &amp; Queens. Education is free; empowerment tiers are a one-time payment for lifetime access. No subscriptions. No renewals. Ever.</p>
     </div>
     <div class="tiers">
       <div class="tier">
@@ -144,6 +146,18 @@
           <li>Join the global mission</li>
         </ul>
         <a class="btn btn-ghost" href="https://futureproofinglifestyle.com/join.html" style="justify-content:center">Join free</a>
+      </div>
+      <div class="tier">
+        <div class="tag">Step two</div>
+        <h3>Friends &amp; Family</h3>
+        <div class="price">Free</div>
+        <div class="usd">to join — try before any payment</div>
+        <ul>
+          <li>The FPL Family Network community feed</li>
+          <li>Starter courses on Happiness, Health and Wealth</li>
+          <li>Weekly live sessions with the family</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://vibe.fplfamilynetwork.com/web/activity" style="justify-content:center">Join the family</a>
       </div>
       <div class="tier hot">
         <div class="tag">Most chosen</div>

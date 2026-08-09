@@ -1,0 +1,3 @@
+# Keep the personal Mx tracker out of the published GitHub Pages site.
+exclude:
+  - mx-tracker.md

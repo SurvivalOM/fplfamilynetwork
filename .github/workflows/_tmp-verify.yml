@@ -1,0 +1,24 @@
+name: TEMP link verification
+on: push
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: GET each outbound link with a browser UA
+        run: |
+          UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36'
+          for u in \
+            https://futureproofinglifestyle.com/ \
+            https://futureproofinglifestyle.com/join.html \
+            https://futureproofinglifestyle.com/pricing.html \
+            https://futureproofinglifestyle.com/terms.html \
+            https://futureproofinglifestyle.com/privacy.html \
+            https://futureproofinglifestyle.com/refund.html \
+            https://futureproofinglifestyle.com/contact.html \
+            https://learn.fplfamilynetwork.com \
+            https://vibe.fplfamilynetwork.com/web/activity \
+            https://fplfamilynetwork.com/ ; do
+            code=$(curl -sS -A "$UA" -o /tmp/body -w '%{http_code}' -L --max-time 25 "$u" || echo ERR)
+            title=$(grep -o -i -m1 '<title>[^<]*' /tmp/body 2>/dev/null | cut -c8- || true)
+            printf '%-6s %-58s %s\n' "$code" "$u" "$title"
+          done

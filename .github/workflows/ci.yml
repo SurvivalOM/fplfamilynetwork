@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  schedule:
+    # Weekly link rot check — the sites we link to are not in this repo.
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+jobs:
+  metadata:
+    name: Page metadata and local links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/*.test.mjs
+
+  links:
+    name: External link check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: lycheeverse/lychee-action@v2
+        with:
+          # 429 and 999 are bot-throttling responses, not broken links.
+          args: >-
+            --no-progress
+            --max-retries 3
+            --accept 200,206,429,999
+            index.html
+          fail: true
